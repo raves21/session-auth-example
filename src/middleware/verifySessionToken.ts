@@ -24,6 +24,7 @@ export function verifySessionToken(
 
   if (!foundSession) {
     res.status(404).json({ error: "Session not found!" });
+    res.clearCookie("sessionToken", { httpOnly: true });
     return;
   }
 
