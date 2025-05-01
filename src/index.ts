@@ -41,8 +41,12 @@ app.get("/api/unprotected/sessions", (req, res) => {
 
 app.post("/api/register", (req, res) => {
   const { email, password, name } = req.body;
-
-  users.push({ id: getRandomString(), email, password, name });
+  const newUser: User = { 
+                id: getRandomString(), 
+                email, password, 
+                name 
+                }
+  users.push(newUser);
   res.status(201).json({ message: "Successfully created account." });
 });
 
@@ -95,9 +99,7 @@ app.get("/api/users", (req, res) => {
 app.get("/api/my-sessions", (_: Request, res: Response) => {
   const req = _ as RequestWithPayload;
 
-  const k = sessions;
-
-  const currentUserSessions = k.filter(
+  const currentUserSessions = req.sessions.filter(
     (session) => session.user.id === req.session.user.id
   );
   res.json({ data: currentUserSessions });
