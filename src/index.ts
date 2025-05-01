@@ -2,7 +2,7 @@ import express from "express";
 import { Request, Response } from "express";
 import cookieParser from "cookie-parser";
 import { users, sessions } from "./database";
-import { Session } from "./types/database";
+import { Session, User} from "./types/database";
 import { verifySessionToken } from "./middleware/verifySessionToken";
 import { RequestWithPayload } from "./types/session";
 
