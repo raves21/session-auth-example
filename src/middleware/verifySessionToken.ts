@@ -30,6 +30,5 @@ export function verifySessionToken(
 
   req.session = foundSession;
 
-  req.session = foundSession;
   next();
 }
