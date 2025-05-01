@@ -43,7 +43,8 @@ app.post("/api/register", (req, res) => {
   const { email, password, name } = req.body;
   const newUser: User = { 
                 id: getRandomString(), 
-                email, password, 
+                email, 
+                password, 
                 name 
                 }
   users.push(newUser);
